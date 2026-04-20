@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roleta de Agentes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="telaInicial" class="tela-inicial">
+    <div class="tela-inicial-card">
+      <h1>Roleta de Agentes</h1>
+      <p>Escolha o modo que você quer usar no VALORANT.</p>
+
+      <div class="tela-inicial-botoes menu-modos">
+        <button class="botao-principal" onclick="entrarNoApp('roleta')">Roleta</button>
+        <button class="botao-secundario destaque-composicao" onclick="entrarNoApp('composicao')">Composição</button>
+      </div>
+
+      <div class="tela-inicial-botoes">
+        <button class="botao-secundario" id="botaoSom" onclick="alternarSom()">Som: Ligado</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="app app-escondido" id="appPrincipal">
+    <header class="topo">
+      <h1>Roleta de Agentes</h1>
+      <p id="subtituloTopo">Sorteie um agente e acompanhe histórico, ranking, bloqueios e composição.</p>
+
+      <div class="modos-topo">
+        <button id="botaoModoRoleta" class="botao-modo ativo" onclick="trocarModo('roleta')">Roleta</button>
+        <button id="botaoModoComposicao" class="botao-modo" onclick="trocarModo('composicao')">Composição</button>
+      </div>
+    </header>
+
+    <main class="conteudo">
+      <aside class="painel">
+        <div id="blocoRoleta">
+          <h2>Configurações da roleta</h2>
+
+          <div class="campo">
+            <label for="classe">Classe do sorteio</label>
+            <select id="classe">
+              <option value="todos">Todos</option>
+              <option value="duelista">Duelista</option>
+              <option value="controlador">Controlador</option>
+              <option value="iniciador">Iniciador</option>
+              <option value="sentinela">Sentinela</option>
+            </select>
+          </div>
+
+          <div class="botoes">
+            <button class="botao-principal" id="botaoSortear" onclick="iniciarSorteio()">
+              Sortear agente
+            </button>
+
+            <button class="botao-secundario" id="botaoCopiar" onclick="copiarResultado()">
+              Copiar resultado
+            </button>
+
+            <button class="botao-alerta" onclick="zerarRanking()">
+              Zerar ranking
+            </button>
+
+            <button class="botao-alerta" onclick="zerarHistorico()">
+              Zerar histórico
+            </button>
+
+            <button class="botao-secundario" onclick="limparResultado()">
+              Limpar tudo
+            </button>
+          </div>
+        </div>
+
+        <div id="blocoComposicao" class="modo-escondido">
+          <h2>Configurações da composição</h2>
+
+          <div class="campo">
+            <label for="mapa">Mapa competitivo</label>
+            <select id="mapa">
+              <option value="Ascent">Ascent</option>
+              <option value="Bind">Bind</option>
+              <option value="Haven">Haven</option>
+              <option value="Split">Split</option>
+              <option value="Icebox">Icebox</option>
+              <option value="Breeze">Breeze</option>
+              <option value="Fracture">Fracture</option>
+              <option value="Pearl">Pearl</option>
+              <option value="Lotus">Lotus</option>
+              <option value="Sunset">Sunset</option>
+              <option value="Abyss">Abyss</option>
+              <option value="Corrode">Corrode</option>
+            </select>
+          </div>
+
+          <div class="botoes">
+            <button class="botao-secundario" onclick="atualizarAnaliseCompetitiva()">
+              Analisar composição
+            </button>
+
+            <button class="botao-principal" onclick="montarComposicao()">
+              Montar composição
+            </button>
+
+            <button class="botao-secundario" onclick="refazerComposicao()">
+              Refazer composição
+            </button>
+
+            <button class="botao-alerta" onclick="limparTime()">
+              Limpar time
+            </button>
+          </div>
+        </div>
+
+        <div class="campo campo-bloqueio">
+          <div class="bloqueio-topo">
+            <label>Gerenciar agentes</label>
+            <span id="contadorBloqueados" class="contador-bloqueados">0 bloqueados • 0 favoritos</span>
+          </div>
+          <div id="listaBloqueio" class="lista-bloqueio"></div>
+        </div>
+
+        <div id="areaTime" class="campo campo-time modo-escondido">
+          <div class="bloqueio-topo">
+            <label>Time já escolheu</label>
+            <span id="contadorTime" class="contador-bloqueados">0 no time</span>
+          </div>
+          <div id="listaTime" class="lista-bloqueio"></div>
+        </div>
+
+        <div class="botoes bloco-acoes-fixas">
+          <button class="botao-alerta" onclick="limparBloqueios()">
+            Limpar bloqueios
+          </button>
+
+          <button class="botao-alerta" onclick="limparFavoritos()">
+            Limpar favoritos
+          </button>
+        </div>
+      </aside>
+
+      <section class="resultado-area">
+        <div id="areaCardRoleta">
+          <div class="card borda-duelista" id="cardResultado">
+            <div class="reveal-overlay"></div>
+            <div class="particulas" id="particulasReveal"></div>
+
+            <div class="imagem-wrapper" id="imagemWrapper">
+              <img id="imagemAgente" src="img/jett.png" alt="Agente">
+            </div>
+
+            <div class="status" id="statusSorteio">Pronto para sortear</div>
+            <div class="nome-agente nome-reveal" id="nomeAgente">Jett</div>
+            <div class="classe-agente duelista" id="classeAgente">Duelista</div>
+            <div class="descricao" id="descricaoAgente">
+              Duelista extremamente móvel, ideal para entry frag, dash e jogadas rápidas.
+            </div>
+            <div class="resultado-texto" id="resultadoTexto">
+              Clique no botão para iniciar o sorteio.
+            </div>
+          </div>
+        </div>
+
+        <div id="areaCardComposicao" class="modo-escondido">
+          <div class="card card-composicao card-composicao-destaque" id="cardComposicao">
+            <div class="reveal-overlay"></div>
+            <div class="particulas" id="particulasComposicao"></div>
+
+            <div class="status">Modo composição</div>
+            <div class="nome-agente nome-reveal">Assistente de composição</div>
+            <div class="descricao">
+              Escolha o mapa, marque os agentes já selecionados pelo seu time e gere uma composição com score, equilíbrio visual e picks sugeridos.
+            </div>
+
+            <div class="badge-funcao-composicao" id="badgeFuncaoComposicao">
+              Função recomendada: Duelista
+            </div>
+
+            <div class="score-composicao-box">
+              <div class="score-composicao-topo">
+                <strong>Score da composição</strong>
+                <span id="scoreComposicaoValor">0</span>
+              </div>
+              <div class="score-estrelas" id="scoreEstrelas">☆☆☆☆☆</div>
+              <div class="score-texto" id="scoreComposicaoTexto">Monte a composição para receber a nota.</div>
+            </div>
+
+            <div class="score-detalhado-box">
+              <div class="score-detalhado-topo">
+                <strong>Leitura detalhada</strong>
+                <small id="scoreDetalhadoResumo">Os critérios aparecem aqui conforme a composição.</small>
+              </div>
+
+              <div class="score-criterios-grid" id="scoreCriteriosGrid">
+                <div class="criterio-score">
+                  <div class="criterio-topo">
+                    <span>Entrada</span>
+                    <strong>0</strong>
+                  </div>
+                  <div class="criterio-track"><div class="criterio-fill barra-duelista" style="width: 0%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="composicao-slots" id="composicaoSlots">
+              <div class="slot-composicao vazio">
+                <span class="slot-indice">01</span>
+                <div class="slot-conteudo">
+                  <strong>Slot livre</strong>
+                  <small>Aguardando composição</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="painel-balanceamento">
+              <div class="painel-balanceamento-topo">
+                <strong>Balanceamento</strong>
+                <small id="resumoBalanceamento">A composição aparecerá aqui.</small>
+              </div>
+              <div class="balanceamento-grid" id="balanceamentoGrid"></div>
+            </div>
+
+            <div class="resultado-texto texto-composicao-centro" id="textoComposicaoCentro">
+              Monte sua composição a partir do painel lateral.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="lateral">
+        <div id="painelRoletaLateral">
+          <h2>Últimos sorteados</h2>
+          <div class="lista-info" id="historicoLista">
+            <div class="item-info">Nenhum sorteio ainda.</div>
+          </div>
+
+          <h2 class="titulo-secundario">Ranking</h2>
+          <div class="lista-info" id="rankingLista">
+            <div class="item-info">O ranking aparecerá aqui.</div>
+          </div>
+        </div>
+
+        <div id="painelComposicaoLateral" class="modo-escondido">
+          <h2>Modo competitivo</h2>
+
+          <div class="lista-info competitivo-box">
+            <div class="item-info competitivo-resumo item-funcao-destaque">
+              <div class="item-info-texto">
+                <strong id="funcaoRecomendada">Função recomendada: Duelista</strong>
+                <small id="resumoMapa">Mapa: Ascent</small>
+              </div>
+            </div>
+
+            <div class="item-info competitivo-resumo">
+              <div class="item-info-texto">
+                <strong>Melhores opções agora</strong>
+                <small id="agentesRecomendados">Jett • Omen • Killjoy</small>
+              </div>
+            </div>
+
+            <div class="sugestoes-composicao" id="sugestoesComposicao">
+              <button type="button" class="mini-sugestao duelista">
+                <img src="img/jett.png" alt="Jett">
+                <span>Jett</span>
+              </button>
+            </div>
+
+            <div class="item-info competitivo-resumo">
+              <div class="item-info-texto">
+                <strong>Leitura da composição</strong>
+                <small id="observacaoComposicao">Escolha o mapa e marque os agentes já pegos para receber uma sugestão.</small>
+              </div>
+            </div>
+
+            <div class="item-info competitivo-resumo">
+              <div class="item-info-texto">
+                <strong>Composição sugerida</strong>
+                <small id="composicaoMontada">Clique em “Montar composição” para gerar uma base de time para o mapa.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
