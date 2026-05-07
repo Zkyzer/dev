@@ -3128,3 +3128,63 @@ section {
     grid-template-columns: 1fr;
   }
 }
+/* ================= AJUSTE HOME 1366x768 / TELAS MENORES ================= */
+
+.secao-capa-inicial {
+  min-height: calc(100svh - var(--altura-navbar));
+  height: calc(100svh - var(--altura-navbar));
+  padding: 70px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-capa-inicial {
+  width: min(760px, 78vw);
+  max-height: 36svh;
+  margin-bottom: 14px;
+}
+
+.subtitulo-capa-inicial {
+  font-size: 1rem;
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+
+.faixa-principal-marca {
+  height: 46px;
+}
+
+.linhas-faixa-marca-topo .linha-azul,
+.linhas-faixa-marca-rodape .linha-vermelha-fina {
+  height: 14px;
+}
+
+.linhas-faixa-marca-topo .linha-branca,
+.linhas-faixa-marca-rodape .linha-branca {
+  height: 5px;
+}
+@media (max-height: 780px) and (min-width: 900px) {
+  .secao-capa-inicial {
+    padding: 58px 0;
+  }
+
+  .logo-capa-inicial {
+    width: min(700px, 74vw);
+    max-height: 32svh;
+  }
+
+  .subtitulo-capa-inicial {
+    font-size: 0.96rem;
+    margin-bottom: 16px;
+  }
+
+  .faixa-principal-marca {
+    height: 42px;
+  }
+
+  .linhas-faixa-marca-topo .linha-azul,
+  .linhas-faixa-marca-rodape .linha-vermelha-fina {
+    height: 12px;
+  }
+}
