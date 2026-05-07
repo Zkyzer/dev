@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unidades | Transportadora Fabris</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar navbar-expand-lg navbar-light navbar-oficial">
+    <div class="container">
+
+      <a class="navbar-brand" href="index.html" aria-label="Voltar para a página inicial">
+        <img src="assets/img/logo.png" alt="Logo Transfabris" class="logo-navbar">
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#menu"
+        aria-controls="menu"
+        aria-expanded="false"
+        aria-label="Abrir menu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#home">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="servicos.html">Serviços</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#sobre">Quem Somos</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" href="unidades.html">Unidades</a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="pracas.html">Regiões Atendidas</a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="rastreamento.html">Rastreamento</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#fale-conosco">Contato</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="btn botao-marca-primario ms-lg-3 mt-3 mt-lg-0" href="index.html#fale-conosco">
+              Fale Conosco
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ================= MAPA INTERATIVO ================= -->
+  <section class="secao-mapa-unidades">
+    <div class="container">
+
+      <div class="cabecalho-mapa-unidades text-center">
+
+        <h2 class="titulo-secao">Nossas Unidades</h2>
+
+        <p class="subtitulo-secao">
+          Navegue pelos estados e clique nos pontos do mapa para visualizar as informações de cada unidade.
+        </p>
+      </div>
+
+      <div class="layout-mapa-unidades">
+
+        <div class="card-mapa-unidades">
+
+          <div class="carrossel-mapa-estados">
+
+            <div class="barra-mapa-estados">
+              <button class="botao-navegacao-estado" id="estadoAnterior" type="button" aria-label="Estado anterior">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+
+              <div class="titulo-mapa-estados">
+                <span id="chamadaEstado">Região principal</span>
+                <strong id="tituloEstado">Santa Catarina</strong>
+                <small id="subtituloEstado">22 cidades com atendimento/unidade</small>
+              </div>
+
+              <button class="botao-navegacao-estado" id="proximoEstado" type="button" aria-label="Próximo estado">
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </div>
+
+            <div class="abas-estados" aria-label="Selecionar estado">
+              <button class="aba-estado active" type="button" data-estado="sc">SC</button>
+              <button class="aba-estado" type="button" data-estado="rs">RS</button>
+              <button class="aba-estado" type="button" data-estado="sp">SP</button>
+              <button class="aba-estado" type="button" data-estado="pr">PR</button>
+            </div>
+
+            <div class="palco-mapa-estado">
+              <div class="midia-mapa-estado">
+                <img
+                  src="assets/img/mapa-sc.png"
+                  alt="Mapa de Santa Catarina"
+                  class="imagem-mapa-estado"
+                  id="imagemMapaEstado"
+                >
+
+                <div class="pins-mapa-estado" id="pinsMapaEstado"></div>
+              </div>
+            </div>
+
+            <div class="rodape-mapa-estado">
+              <div>
+                <span class="ponto-legenda ponto-legenda-vermelho"></span>
+                Estado selecionado
+              </div>
+
+              <div>
+                <span class="ponto-legenda ponto-legenda-azul"></span>
+                Unidades
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <aside class="card-detalhe-unidade" id="cardDetalheUnidade">
+          <div class="imagem-detalhe-unidade" id="imagemUnidade">
+            <i class="bi bi-image"></i>
+            <span>Placeholder da foto da matriz em Lages</span>
+          </div>
+
+          <div class="conteudo-detalhe-unidade">
+
+            <div class="topo-detalhe-unidade">
+              <span class="selo-unidade" id="seloUnidade">Matriz</span>
+              <h3 id="nomeUnidade">Lages - SC</h3>
+            </div>
+
+            <p class="descricao-detalhe-unidade" id="descricaoUnidade">
+              Matriz da Transportadora Fabris, com atendimento contínuo e suporte operacional para as rotas da empresa.
+            </p>
+
+            <div class="lista-detalhe-unidade">
+
+              <p>
+                <i class="bi bi-building"></i>
+                <span id="enderecoUnidade">Av. Luiz de Camões, 796 - Coral</span>
+              </p>
+
+              <p>
+                <i class="bi bi-telephone-fill"></i>
+                <span id="telefoneUnidade">(49) 3706-1400</span>
+              </p>
+
+              <p>
+                <i class="bi bi-clock-fill"></i>
+                <span id="horarioUnidade">Funcionamento 24 horas</span>
+              </p>
+
+            </div>
+
+            <div class="acoes-detalhe-unidade">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Av.+Luiz+de+Cam%C3%B5es,+796,+Coral,+Lages,+SC"
+                target="_blank"
+                rel="noopener"
+                class="btn botao-marca-primario"
+                id="linkMapaUnidade"
+              >
+                Ver no mapa
+              </a>
+
+              <a
+                href="https://api.whatsapp.com/send?phone=554937061400"
+                target="_blank"
+                rel="noopener"
+                class="link-unidade"
+                id="linkContatoUnidade"
+              >
+                Solicitar atendimento
+              </a>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+
+
+      <!-- ================= CIDADES ATENDIDAS ================= -->
+      <div class="painel-cidades-atendidas" id="painelCidadesAtendidas">
+        <div class="cabecalho-cidades-atendidas">
+
+          <div>
+            <span class="etiqueta-secao">Cidades atendidas</span>
+            <h2 id="tituloCidadesAtendidas">Cidades atendidas pela unidade selecionada</h2>
+            <p id="subtituloCidadesAtendidas">
+              Relação de cidades atendidas pela unidade selecionada no mapa.
+            </p>
+          </div>
+
+          <div class="resumo-cidades-atendidas">
+            <span id="contadorCidadesAtendidas">0 cidades</span>
+          </div>
+
+        </div>
+
+        <div class="grade-cidades-atendidas" id="gradeCidadesAtendidas"></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= APOIO OPERACIONAL ================= -->
+  <section class="secao-apoio-unidades">
+    <div class="container">
+
+      <div class="caixa-apoio-unidades">
+        <div>
+          <span class="etiqueta-secao">Atendimento estratégico</span>
+
+          <h2>Operação preparada para diferentes demandas logísticas</h2>
+
+          <p>
+            A Transportadora Fabris atua com suporte contínuo, estrutura operacional
+            e atendimento focado em eficiência para cargas fracionadas e fechadas.
+          </p>
+        </div>
+
+        <div class="grade-apoio-unidades">
+
+          <div>
+            <i class="bi bi-clock-history"></i>
+            <strong>24h</strong>
+            <span>operação contínua</span>
+          </div>
+
+          <div>
+            <i class="bi bi-shield-check"></i>
+            <strong>Seguro</strong>
+            <span>controle e cuidado</span>
+          </div>
+
+          <div>
+            <i class="bi bi-truck-front"></i>
+            <strong>Ágil</strong>
+            <span>eficiência na entrega</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FALE CONOSCO ================= -->
+  <section id="fale-conosco" class="secao-rodape-contato">
+    <div class="container">
+      <div class="grade-rodape-contato">
+
+        <div class="coluna-rodape-contato chamada-rodape-contato">
+          <span class="destaque-rodape-contato">Fale Conosco</span>
+          <h2>Vamos conversar sobre a sua operação?</h2>
+          <p>
+            Nossa equipe está pronta para entender a sua necessidade e apresentar
+            a melhor solução em transporte para a sua empresa.
+          </p>
+
+          <div class="acoes-rodape-contato">
+            <a
+              href="https://api.whatsapp.com/send?phone=554937061400"
+              target="_blank"
+              rel="noopener"
+              class="botao-contato-primario"
+            >
+              <i class="bi bi-whatsapp"></i>
+              Falar no WhatsApp
+            </a>
+
+            <a
+              href="mailto:contato@transfabris.com.br"
+              class="botao-contato-secundario"
+            >
+              <i class="bi bi-envelope-fill"></i>
+              Enviar e-mail
+            </a>
+          </div>
+        </div>
+
+        <div class="coluna-rodape-contato marca-rodape-contato">
+          <img
+            src="assets/img/logo-fabris.png"
+            alt="Trans Fabris - 24 horas atendendo você"
+            class="logo-rodape-contato"
+          >
+          <p class="texto-copy-rodape-contato">
+            © 2026 Transportadora Fabris. Todos os direitos reservados.
+          </p>
+        </div>
+
+        <div class="coluna-rodape-contato info-rodape-contato">
+          <h3>Informações de contato</h3>
+
+          <ul class="lista-rodape-contato">
+            <li>
+              <i class="bi bi-geo-alt-fill"></i>
+              <span>Av. Luiz de Camões, 796 - Coral<br>Lages/SC</span>
+            </li>
+            <li>
+              <i class="bi bi-telephone-fill"></i>
+              <span>(49) 3706-1400</span>
+            </li>
+            <li>
+              <i class="bi bi-envelope-fill"></i>
+              <span>contato@transfabris.com.br</span>
+            </li>
+          </ul>
+
+          <div class="social-rodape-contato">
+            <a href="https://api.whatsapp.com/send?phone=554937061400" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="https://www.instagram.com/transportadorafabris/" target="_blank" rel="noopener" aria-label="Instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/transportadorafabris" target="_blank" rel="noopener" aria-label="Facebook">
+              <i class="bi bi-facebook"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ASSISTENTE VIRTUAL ================= -->
+  <div class="assistente-site" id="assistenteSite">
+    <button class="botao-flutuante-assistente" id="botaoAssistente" type="button" aria-label="Abrir assistente virtual" aria-expanded="false" aria-controls="painelAssistente">
+      <span class="selo-assistente">1</span>
+      <img src="assets/img/mascote-assistente.png" alt="Mascote assistente da Transfabris" class="avatar-assistente">
+    </button>
+
+    <div class="painel-assistente" id="painelAssistente" aria-hidden="true">
+      <div class="cabecalho-painel-assistente">
+        <div class="identidade-cabecalho-assistente">
+          <img src="assets/img/mascote-assistente.png" alt="Mascote da Transfabris" class="avatar-cabecalho-assistente">
+          <div>
+            <strong>Assistente (nao dei nome ainda)</strong>
+            <span>Online • resposta rápida</span>
+          </div>
+        </div>
+
+        <button class="fechar-assistente" id="fecharAssistente" type="button" aria-label="Fechar assistente">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="corpo-painel-assistente">
+        <div class="mensagem-assistente">
+          <p>Olá! Eu sou o mascote da Transportadora Fabris 🐾</p>
+          <small>Posso te ajudar a encontrar o setor certo mais rápido.</small>
+        </div>
+
+        <div class="acoes-rapidas-assistente">
+          <a href="https://api.whatsapp.com/send?phone=554937061400" target="_blank" rel="noopener">
+            <i class="bi bi-whatsapp"></i>
+            Falar no WhatsApp
+          </a>
+
+          <a href="servicos.html">
+            <i class="bi bi-grid"></i>
+            Ver serviços
+          </a>
+
+          <a href="unidades.html">
+            <i class="bi bi-geo-alt"></i>
+            Ver unidades
+          </a>
+
+          <a href="pracas.html">
+            <i class="bi bi-calendar-check"></i>
+            Consultar Regiões atendidas
+          </a>
+
+          <a href="rastreamento.html">
+            <i class="bi bi-truck"></i>
+            Consultar rastreamento
+          </a>
+
+          <a href="index.html#fale-conosco">
+            <i class="bi bi-headset"></i>
+            Falar com a equipe
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tooltip-assistente" id="tooltipAssistente">
+      Olá! Precisa de ajuda?
+    </div>
+  </div>
+
+
+  <!-- ================= JS ================= -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>
