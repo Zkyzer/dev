@@ -706,7 +706,7 @@ section {
   }
 
   .logo-capa-inicial {
-    width: min(650x, 90vw);
+    width: min(650px, 90vw);
     max-height: 40vh;
   }
 
@@ -2515,8 +2515,7 @@ section {
   color: var(--azul-marca-escuro);
 }
 
-.selo-praca-entrega,
-.delivery-source-page {
+.selo-praca-entrega {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -3128,20 +3127,65 @@ section {
     grid-template-columns: 1fr;
   }
 }
-/* ================= AJUSTE HOME 1366x768 / TELAS MENORES ================= */
+
+
+/* ================= REVISÃO FINAL DE RESPONSIVIDADE CONTROLADA ================= */
+
+/*
+  Camada final feita para melhorar o encaixe do site sem esticar o layout.
+  Importante:
+  - não altera a largura global do .container;
+  - mantém o visual atual;
+  - concentra ajustes de altura, espaçamento e empilhamento;
+  - melhora principalmente telas 1366x768, notebooks, tablets e celulares.
+*/
+
+/* ---------- HOME / PRIMEIRA TELA ---------- */
 
 .secao-capa-inicial {
   min-height: calc(100svh - var(--altura-navbar));
   height: calc(100svh - var(--altura-navbar));
-  padding: 70px 0;
+  padding: clamp(58px, 8svh, 86px) 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-@media (max-height: 780px) and (min-width: 900px) {
+.conteudo-capa-inicial {
+  width: min(100%, 900px);
+}
+
+.logo-capa-inicial {
+  width: min(860px, 82vw);
+  max-height: 42svh;
+  margin-bottom: clamp(12px, 2svh, 20px);
+}
+
+.subtitulo-capa-inicial {
+  font-size: clamp(0.96rem, 1.15vw, 1.08rem);
+  line-height: 1.58;
+  margin-bottom: clamp(16px, 2.5svh, 24px);
+}
+
+/* Faixas da home com altura mais segura em telas baixas */
+.faixa-principal-marca {
+  height: clamp(42px, 6.4svh, 58px);
+}
+
+.linhas-faixa-marca-topo .linha-branca,
+.linhas-faixa-marca-rodape .linha-branca {
+  height: clamp(4px, 0.75svh, 6px);
+}
+
+.linhas-faixa-marca-topo .linha-azul,
+.linhas-faixa-marca-rodape .linha-vermelha-fina {
+  height: clamp(12px, 2svh, 18px);
+}
+
+/* Ajuste especial para 1366x768 e notebooks com pouca altura */
+@media (max-height: 800px) and (min-width: 900px) {
   .secao-capa-inicial {
-    padding: 52px 0;
+    padding: 50px 0;
   }
 
   .logo-capa-inicial {
@@ -3152,41 +3196,7 @@ section {
 
   .subtitulo-capa-inicial {
     font-size: 0.98rem;
-    margin-bottom: 18px;
-  }
-}
-
-.subtitulo-capa-inicial {
-  font-size: 1rem;
-  line-height: 1.55;
-  margin-bottom: 20px;
-}
-
-.faixa-principal-marca {
-  height: 46px;
-}
-
-.linhas-faixa-marca-topo .linha-azul,
-.linhas-faixa-marca-rodape .linha-vermelha-fina {
-  height: 14px;
-}
-
-.linhas-faixa-marca-topo .linha-branca,
-.linhas-faixa-marca-rodape .linha-branca {
-  height: 5px;
-}
-@media (max-height: 780px) and (min-width: 900px) {
-  .secao-capa-inicial {
-    padding: 58px 0;
-  }
-
-  .logo-capa-inicial {
-    width: min(700px, 74vw);
-    max-height: 32svh;
-  }
-
-  .subtitulo-capa-inicial {
-    font-size: 0.96rem;
+    line-height: 1.52;
     margin-bottom: 16px;
   }
 
@@ -3198,123 +3208,296 @@ section {
   .linhas-faixa-marca-rodape .linha-vermelha-fina {
     height: 12px;
   }
-}
-/* ================= AJUSTE RESPONSIVO GERAL DAS ABAS ================= */
 
-/* Logo do menu em telas médias/notebook */
+  .linhas-faixa-marca-topo .linha-branca,
+  .linhas-faixa-marca-rodape .linha-branca {
+    height: 5px;
+  }
+}
+
+/* ---------- NAVBAR ---------- */
+
+.navbar-oficial {
+  min-height: var(--altura-navbar);
+}
+
 .logo-navbar {
-  height: 50px;
+  height: 38px;
   width: auto;
 }
 
-/* Ajuste específico para 1366x768 e notebooks */
-@media (max-width: 1400px) and (max-height: 800px) {
-  .logo-navbar {
-    height: 44px;
+@media (max-width: 991px) {
+  .navbar-oficial .navbar-nav {
+    padding-top: 12px;
+    padding-bottom: 8px;
+  }
+
+  .navbar-oficial .nav-link {
+    padding: 10px 0;
+  }
+
+  .navbar .botao-marca-primario {
+    width: 100%;
+    justify-content: center;
   }
 }
 
-/* Mobile mantém menor para não estourar navbar */
-@media (max-width: 768px) {
-  .logo-navbar {
-    height: 38px;
-  }
-}
+/* ---------- SEÇÕES INTERNAS ---------- */
 
-/* Primeira dobra das páginas internas */
 .hero-pagina-servicos,
 .secao-hero-entrega,
-.secao-hero-rastreamento,
-.units-hero-section,
-.secao-hero-unidades {
-  min-height: auto;
-  padding-top: clamp(70px, 9vh, 105px);
-  padding-bottom: clamp(70px, 9vh, 105px);
+.secao-hero-rastreamento {
+  padding-top: clamp(72px, 9svh, 112px);
+  padding-bottom: clamp(68px, 8svh, 86px);
 }
 
-/* Telas com pouca altura: 1366x768, notebooks e monitores menores */
-@media (max-height: 800px) and (min-width: 900px) {
-  .hero-pagina-servicos,
-  .secao-hero-entrega,
-  .secao-hero-rastreamento,
-  .units-hero-section,
-  .secao-hero-unidades {
-    padding-top: 62px;
-    padding-bottom: 62px;
-  }
-
-  .conteudo-hero-servicos h1,
-  .conteudo-hero-entrega h1,
-  .conteudo-hero-rastreamento h1,
-  .units-hero-section h1,
-  .secao-hero-unidades h1 {
-    font-size: clamp(2rem, 3.4vw, 3.3rem);
-  }
-
-  .conteudo-hero-servicos p,
-  .conteudo-hero-entrega p,
-  .conteudo-hero-rastreamento p,
-  .units-hero-section p,
-  .secao-hero-unidades p {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-}
-
-/* Seções principais das páginas internas */
+.secao-sobre,
 .secao-destaque-servicos,
 .secao-beneficios-servicos,
 .secao-mapa-unidades,
 .secao-agenda-entrega,
 .secao-consulta-rastreamento,
-.secao-sobre,
 .secao-apoio-unidades {
-  padding-top: clamp(64px, 8vw, 100px);
-  padding-bottom: clamp(64px, 8vw, 100px);
+  padding-top: clamp(64px, 7vw, 100px);
+  padding-bottom: clamp(64px, 7vw, 100px);
 }
 
-/* Telas menores: reduz respiro sem esmagar */
-@media (max-width: 991px) {
+@media (max-height: 800px) and (min-width: 900px) {
   .hero-pagina-servicos,
   .secao-hero-entrega,
-  .secao-hero-rastreamento,
-  .units-hero-section,
-  .secao-hero-unidades {
-    padding-top: 72px;
-    padding-bottom: 72px;
-  }
-
-  .secao-destaque-servicos,
-  .secao-beneficios-servicos,
-  .secao-mapa-unidades,
-  .secao-agenda-entrega,
-  .secao-consulta-rastreamento,
-  .secao-sobre,
-  .secao-apoio-unidades {
-    padding-top: 68px;
-    padding-bottom: 68px;
-  }
-}
-
-/* Celular */
-@media (max-width: 575px) {
-  .hero-pagina-servicos,
-  .secao-hero-entrega,
-  .secao-hero-rastreamento,
-  .units-hero-section,
-  .secao-hero-unidades {
-    padding-top: 58px;
+  .secao-hero-rastreamento {
+    padding-top: 62px;
     padding-bottom: 58px;
   }
 
+  .conteudo-hero-servicos h1,
+  .conteudo-hero-entrega h1,
+  .conteudo-hero-rastreamento h1 {
+    font-size: clamp(2rem, 3.4vw, 3.25rem);
+  }
+
+  .conteudo-hero-servicos p,
+  .conteudo-hero-entrega p,
+  .conteudo-hero-rastreamento p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
   .secao-destaque-servicos,
-  .secao-beneficios-servicos,
   .secao-mapa-unidades,
   .secao-agenda-entrega,
-  .secao-consulta-rastreamento,
-  .secao-sobre,
-  .secao-apoio-unidades {
-    padding-top: 56px;
-    padding-bottom: 56px;
+  .secao-consulta-rastreamento {
+    padding-top: 70px;
+    padding-bottom: 78px;
+  }
+}
+
+/* ---------- SERVIÇOS ---------- */
+
+.card-destaque-servico {
+  min-height: clamp(500px, 44vw, 560px);
+}
+
+.area-imagem-destaque-servico,
+.imagem-destaque-servico {
+  min-height: clamp(500px, 44vw, 560px);
+}
+
+.conteudo-destaque-servico {
+  padding: clamp(34px, 4vw, 58px);
+}
+
+@media (max-width: 991px) {
+  .card-destaque-servico {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .area-imagem-destaque-servico,
+  .imagem-destaque-servico {
+    min-height: clamp(280px, 46vw, 400px);
+  }
+
+  .seta-slider-servico {
+    top: auto;
+    bottom: 18px;
+    transform: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .conteudo-destaque-servico {
+    padding: 26px 18px;
+  }
+
+  .area-imagem-destaque-servico,
+  .imagem-destaque-servico {
+    min-height: 240px;
+  }
+}
+
+/* ---------- UNIDADES ---------- */
+
+@media (max-width: 1199px) {
+  .layout-mapa-unidades {
+    grid-template-columns: 1fr;
+  }
+
+  .card-detalhe-unidade {
+    max-width: 820px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .card-mapa-unidades {
+    padding: 22px 16px;
+  }
+
+  .barra-mapa-estados {
+    grid-template-columns: 44px 1fr 44px;
+    gap: 10px;
+  }
+
+  .botao-navegacao-estado {
+    width: 44px;
+    height: 44px;
+  }
+
+  .titulo-mapa-estados strong {
+    font-size: clamp(1.15rem, 5vw, 1.55rem);
+  }
+
+  .abas-estados {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding-bottom: 6px;
+  }
+
+  .aba-estado {
+    flex: 0 0 auto;
+  }
+
+  .palco-mapa-estado {
+    min-height: 320px;
+  }
+
+  .painel-cidades-atendidas {
+    padding: 24px 18px;
+  }
+
+  .grade-cidades-atendidas {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- REGIÕES ATENDIDAS ---------- */
+
+@media (max-width: 1199px) {
+  .grade-filtros-entrega {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .botao-limpar-entrega {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .grade-resumo-entrega,
+  .grade-filtros-entrega {
+    grid-template-columns: 1fr;
+  }
+
+  .area-tabela-entrega {
+    display: none;
+  }
+
+  .cards-entrega {
+    display: grid;
+    gap: 12px;
+  }
+
+  .atalhos-dias-entrega {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 6px;
+  }
+
+  .atalhos-dias-entrega button {
+    flex: 0 0 auto;
+  }
+}
+
+/* ---------- RASTREAMENTO ---------- */
+
+@media (max-width: 1199px) {
+  .layout-rastreamento {
+    grid-template-columns: 1fr;
+  }
+
+  .formulario-rastreamento {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .botao-consultar-rastreamento {
+    width: 100%;
+  }
+
+  .linha-tempo-rastreamento {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grade-dados-rastreamento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .formulario-rastreamento,
+  .linha-tempo-rastreamento,
+  .grade-dados-rastreamento,
+  .resumo-status-rastreamento {
+    grid-template-columns: 1fr;
+  }
+
+  .card-consulta-rastreamento,
+  .card-resumo-rastreamento,
+  .painel-resultado-rastreamento {
+    padding: 24px 18px;
+    border-radius: 24px;
+  }
+}
+
+/* ---------- CELULAR PEQUENO ---------- */
+
+@media (max-width: 575px) {
+  .secao-capa-inicial {
+    min-height: calc(100svh - var(--altura-navbar));
+    padding: 70px 0;
+  }
+
+  .logo-capa-inicial {
+    width: min(470px, 92vw);
+    max-height: 34svh;
+  }
+
+  .acoes-capa-inicial,
+  .acoes-pagina-servicos,
+  .acoes-hero-entrega,
+  .acoes-hero-rastreamento,
+  .acoes-destaque-servico {
+    width: 100%;
+  }
+
+  .acoes-capa-inicial .btn,
+  .acoes-pagina-servicos .btn,
+  .acoes-hero-entrega .btn,
+  .acoes-hero-rastreamento .btn,
+  .acoes-destaque-servico .btn {
+    width: min(100%, 360px);
   }
 }
