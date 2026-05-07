@@ -789,6 +789,10 @@ section {
   flex-direction: column;
   align-items: flex-end;
   gap: 12px;
+
+  .assistente-site {
+  display: none !important;
+}
 }
 
 /* Botão invisível: o mascote aparece natural, sem bola/fundo branco */
