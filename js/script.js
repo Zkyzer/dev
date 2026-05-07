@@ -17,62 +17,6 @@ function revelarAoRolar() {
 window.addEventListener("scroll", revelarAoRolar);
 window.addEventListener("load", revelarAoRolar);
 
-// ================= ASSISTENTE VIRTUAL =================
-
-const assistenteSite = document.getElementById('assistenteSite');
-const botaoAssistente = document.getElementById('botaoAssistente');
-const painelAssistente = document.getElementById('painelAssistente');
-const botaoFecharAssistente = document.getElementById('fecharAssistente');
-
-if (assistenteSite && botaoAssistente && painelAssistente) {
-  function abrirAssistente() {
-    assistenteSite.classList.add('esta-aberto');
-    botaoAssistente.setAttribute('aria-expanded', 'true');
-    painelAssistente.setAttribute('aria-hidden', 'false');
-  }
-
-  function fecharAssistente() {
-    assistenteSite.classList.remove('esta-aberto');
-    botaoAssistente.setAttribute('aria-expanded', 'false');
-    painelAssistente.setAttribute('aria-hidden', 'true');
-  }
-
-  botaoAssistente.addEventListener('click', () => {
-    const estaAberto = assistenteSite.classList.contains('esta-aberto');
-    if (estaAberto) {
-      fecharAssistente();
-    } else {
-      abrirAssistente();
-    }
-  });
-
-  if (botaoFecharAssistente) {
-    botaoFecharAssistente.addEventListener('click', fecharAssistente);
-  }
-
-  document.addEventListener('click', (evento) => {
-    const clicouDentro = assistenteSite.contains(evento.target);
-    if (!clicouDentro) {
-      fecharAssistente();
-    }
-  });
-
-  window.addEventListener('keydown', (evento) => {
-    if (evento.key === 'Escape') {
-      fecharAssistente();
-    }
-  });
-
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      if (!assistenteSite.classList.contains('esta-aberto')) {
-        assistenteSite.classList.add('esta-destacado');
-      }
-    }, 900);
-  });
-}
-
-
 // ================= UNIDADES - MAPA INTERATIVO =================
 
 const dadosMapasEstados = [
