@@ -3139,10 +3139,21 @@ section {
   justify-content: center;
 }
 
-.logo-capa-inicial {
-  width: min(760px, 78vw);
-  max-height: 36svh;
-  margin-bottom: 14px;
+@media (max-height: 780px) and (min-width: 900px) {
+  .secao-capa-inicial {
+    padding: 52px 0;
+  }
+
+  .logo-capa-inicial {
+    width: min(850px, 80vw);
+    max-height: 40svh;
+    margin-bottom: 14px;
+  }
+
+  .subtitulo-capa-inicial {
+    font-size: 0.98rem;
+    margin-bottom: 18px;
+  }
 }
 
 .subtitulo-capa-inicial {
