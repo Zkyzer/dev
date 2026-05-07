@@ -3188,3 +3188,122 @@ section {
     height: 12px;
   }
 }
+/* ================= AJUSTE RESPONSIVO GERAL DAS ABAS ================= */
+
+/* Logo do menu em telas médias/notebook */
+.logo-navbar {
+  height: 50px;
+  width: auto;
+}
+
+/* Ajuste específico para 1366x768 e notebooks */
+@media (max-width: 1400px) and (max-height: 800px) {
+  .logo-navbar {
+    height: 44px;
+  }
+}
+
+/* Mobile mantém menor para não estourar navbar */
+@media (max-width: 768px) {
+  .logo-navbar {
+    height: 38px;
+  }
+}
+
+/* Primeira dobra das páginas internas */
+.hero-pagina-servicos,
+.secao-hero-entrega,
+.secao-hero-rastreamento,
+.units-hero-section,
+.secao-hero-unidades {
+  min-height: auto;
+  padding-top: clamp(70px, 9vh, 105px);
+  padding-bottom: clamp(70px, 9vh, 105px);
+}
+
+/* Telas com pouca altura: 1366x768, notebooks e monitores menores */
+@media (max-height: 800px) and (min-width: 900px) {
+  .hero-pagina-servicos,
+  .secao-hero-entrega,
+  .secao-hero-rastreamento,
+  .units-hero-section,
+  .secao-hero-unidades {
+    padding-top: 62px;
+    padding-bottom: 62px;
+  }
+
+  .conteudo-hero-servicos h1,
+  .conteudo-hero-entrega h1,
+  .conteudo-hero-rastreamento h1,
+  .units-hero-section h1,
+  .secao-hero-unidades h1 {
+    font-size: clamp(2rem, 3.4vw, 3.3rem);
+  }
+
+  .conteudo-hero-servicos p,
+  .conteudo-hero-entrega p,
+  .conteudo-hero-rastreamento p,
+  .units-hero-section p,
+  .secao-hero-unidades p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+/* Seções principais das páginas internas */
+.secao-destaque-servicos,
+.secao-beneficios-servicos,
+.secao-mapa-unidades,
+.secao-agenda-entrega,
+.secao-consulta-rastreamento,
+.secao-sobre,
+.secao-apoio-unidades {
+  padding-top: clamp(64px, 8vw, 100px);
+  padding-bottom: clamp(64px, 8vw, 100px);
+}
+
+/* Telas menores: reduz respiro sem esmagar */
+@media (max-width: 991px) {
+  .hero-pagina-servicos,
+  .secao-hero-entrega,
+  .secao-hero-rastreamento,
+  .units-hero-section,
+  .secao-hero-unidades {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .secao-destaque-servicos,
+  .secao-beneficios-servicos,
+  .secao-mapa-unidades,
+  .secao-agenda-entrega,
+  .secao-consulta-rastreamento,
+  .secao-sobre,
+  .secao-apoio-unidades {
+    padding-top: 68px;
+    padding-bottom: 68px;
+  }
+}
+
+/* Celular */
+@media (max-width: 575px) {
+  .hero-pagina-servicos,
+  .secao-hero-entrega,
+  .secao-hero-rastreamento,
+  .units-hero-section,
+  .secao-hero-unidades {
+    padding-top: 58px;
+    padding-bottom: 58px;
+  }
+
+  .secao-destaque-servicos,
+  .secao-beneficios-servicos,
+  .secao-mapa-unidades,
+  .secao-agenda-entrega,
+  .secao-consulta-rastreamento,
+  .secao-sobre,
+  .secao-apoio-unidades {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+}
