@@ -1185,15 +1185,51 @@ if (botaoServicoAnterior && botaoServicoProximo && tituloServico) {
 // ================= MASCOTE FLUTUANTE =================
 
 const mascoteSite = document.getElementById("mascoteSite");
+const botaoAbrirMascote = document.getElementById("botaoAbrirMascote");
 const botaoFecharMascote = document.getElementById("botaoFecharMascote");
+const botaoFecharPainelMascote = document.getElementById("botaoFecharPainelMascote");
 const botaoReaparecerMascote = document.getElementById("botaoReaparecerMascote");
+const painelMascote = document.getElementById("painelMascote");
 const chaveMascoteOculto = "transfabrisMascoteOculto";
+
+function fecharPainelMascote() {
+  if (!mascoteSite || !painelMascote || !botaoAbrirMascote) {
+    return;
+  }
+
+  mascoteSite.classList.remove("painel-aberto");
+  painelMascote.setAttribute("aria-hidden", "true");
+  botaoAbrirMascote.setAttribute("aria-expanded", "false");
+}
+
+function abrirPainelMascote() {
+  if (!mascoteSite || !painelMascote || !botaoAbrirMascote) {
+    return;
+  }
+
+  mascoteSite.classList.add("painel-aberto");
+  painelMascote.setAttribute("aria-hidden", "false");
+  botaoAbrirMascote.setAttribute("aria-expanded", "true");
+}
+
+function alternarPainelMascote() {
+  if (!mascoteSite) {
+    return;
+  }
+
+  if (mascoteSite.classList.contains("painel-aberto")) {
+    fecharPainelMascote();
+  } else {
+    abrirPainelMascote();
+  }
+}
 
 function ocultarMascote() {
   if (!mascoteSite || !botaoReaparecerMascote) {
     return;
   }
 
+  fecharPainelMascote();
   mascoteSite.classList.add("mascote-oculto");
   botaoReaparecerMascote.classList.add("esta-visivel");
   localStorage.setItem(chaveMascoteOculto, "sim");
@@ -1217,10 +1253,39 @@ if (mascoteSite && botaoReaparecerMascote) {
     botaoReaparecerMascote.classList.add("esta-visivel");
   }
 
+  if (botaoAbrirMascote) {
+    botaoAbrirMascote.addEventListener("click", (evento) => {
+      evento.stopPropagation();
+      alternarPainelMascote();
+    });
+  }
+
+  if (botaoFecharPainelMascote) {
+    botaoFecharPainelMascote.addEventListener("click", (evento) => {
+      evento.stopPropagation();
+      fecharPainelMascote();
+    });
+  }
+
   if (botaoFecharMascote) {
-    botaoFecharMascote.addEventListener("click", ocultarMascote);
+    botaoFecharMascote.addEventListener("click", (evento) => {
+      evento.stopPropagation();
+      ocultarMascote();
+    });
   }
 
   botaoReaparecerMascote.addEventListener("click", mostrarMascote);
+
+  document.addEventListener("click", (evento) => {
+    if (!mascoteSite.contains(evento.target)) {
+      fecharPainelMascote();
+    }
+  });
+
+  window.addEventListener("keydown", (evento) => {
+    if (evento.key === "Escape") {
+      fecharPainelMascote();
+    }
+  });
 }
 

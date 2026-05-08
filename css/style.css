@@ -3285,14 +3285,14 @@ section {
 }
 
 
-/* ================= MASCOTE FLUTUANTE RESPONSIVO ================= */
+/* ================= MASCOTE FLUTUANTE RESPONSIVO E INTERATIVO ================= */
 
 .mascote-site {
   position: fixed;
-  right: clamp(14px, 2.2vw, 34px);
-  bottom: clamp(16px, 3vh, 34px);
+  right: clamp(18px, 2.6vw, 42px);
+  bottom: clamp(18px, 3vh, 38px);
   z-index: 1200;
-  width: clamp(118px, 12vw, 185px);
+  width: clamp(150px, 13.5vw, 225px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -3309,22 +3309,38 @@ section {
   transform: translateY(18px) scale(0.94);
 }
 
+.botao-abrir-mascote {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: transform 0.22s ease, filter 0.22s ease;
+}
+
+.botao-abrir-mascote:hover,
+.botao-abrir-mascote:focus-visible {
+  transform: translateY(-4px) scale(1.03);
+  filter: drop-shadow(0 18px 26px rgba(8, 37, 95, 0.24));
+  outline: none;
+}
+
 .imagem-mascote {
   width: 100%;
   height: auto;
   display: block;
   object-fit: contain;
   filter: drop-shadow(0 16px 24px rgba(8, 37, 95, 0.22));
-  pointer-events: auto;
   user-select: none;
 }
 
 .botao-fechar-mascote {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: clamp(27px, 2.4vw, 34px);
-  height: clamp(27px, 2.4vw, 34px);
+  top: 4px;
+  right: 2px;
+  width: clamp(31px, 2.6vw, 38px);
+  height: clamp(31px, 2.6vw, 38px);
   border: 1px solid rgba(8, 37, 95, 0.12);
   border-radius: 999px;
   background: #ffffff;
@@ -3332,12 +3348,12 @@ section {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(0.72rem, 1vw, 0.86rem);
+  font-size: clamp(0.78rem, 1vw, 0.92rem);
   box-shadow: 0 10px 24px rgba(8, 37, 95, 0.16);
   cursor: pointer;
   pointer-events: auto;
   transition: 0.2s ease;
-  z-index: 3;
+  z-index: 5;
 }
 
 .botao-fechar-mascote:hover {
@@ -3349,15 +3365,15 @@ section {
 
 .balao-mascote {
   position: absolute;
-  right: min(82%, 132px);
+  right: min(82%, 150px);
   top: clamp(8px, 1.3vw, 18px);
   min-width: 150px;
-  max-width: 190px;
+  max-width: 205px;
   background: var(--azul-marca-escuro);
   color: #ffffff;
   border-radius: 16px 16px 4px 16px;
   padding: 10px 14px;
-  font-size: clamp(0.78rem, 0.95vw, 0.9rem);
+  font-size: clamp(0.82rem, 0.95vw, 0.94rem);
   font-weight: 800;
   line-height: 1.25;
   text-align: center;
@@ -3378,6 +3394,129 @@ section {
   border-radius: 2px;
 }
 
+.painel-mascote {
+  position: absolute;
+  right: calc(100% + 16px);
+  bottom: 22px;
+  width: min(340px, calc(100vw - 34px));
+  max-height: min(78vh, 520px);
+  overflow: auto;
+  background: #ffffff;
+  border: 1px solid rgba(18, 59, 143, 0.14);
+  border-radius: 24px;
+  box-shadow: 0 26px 64px rgba(8, 37, 95, 0.20);
+  pointer-events: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(14px) translateY(10px) scale(0.96);
+  transform-origin: bottom right;
+  transition:
+    opacity 0.22s ease,
+    visibility 0.22s ease,
+    transform 0.22s ease;
+}
+
+.mascote-site.painel-aberto .painel-mascote {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0) translateY(0) scale(1);
+}
+
+.mascote-site.painel-aberto .balao-mascote {
+  display: none;
+}
+
+.cabecalho-painel-mascote {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 18px 18px 16px;
+  background: linear-gradient(135deg, var(--azul-marca), var(--azul-marca-escuro));
+  color: #ffffff;
+}
+
+.cabecalho-painel-mascote strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.cabecalho-painel-mascote span {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.82rem;
+  opacity: 0.86;
+  font-weight: 700;
+}
+
+.botao-fechar-painel-mascote {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+  flex: 0 0 auto;
+}
+
+.botao-fechar-painel-mascote:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: scale(1.05);
+}
+
+.corpo-painel-mascote {
+  padding: 18px;
+}
+
+.corpo-painel-mascote p {
+  margin: 0 0 14px;
+  color: var(--texto-suave);
+  line-height: 1.55;
+  font-size: 0.92rem;
+}
+
+.acoes-painel-mascote {
+  display: grid;
+  gap: 10px;
+}
+
+.acoes-painel-mascote a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 11px 13px;
+  border-radius: 14px;
+  background: #f8fbff;
+  border: 1px solid rgba(18, 59, 143, 0.10);
+  color: var(--azul-marca-escuro);
+  font-weight: 900;
+  text-decoration: none;
+  transition: 0.22s ease;
+}
+
+.acoes-painel-mascote a i {
+  color: var(--vermelho-marca);
+  font-size: 1.05rem;
+}
+
+.acoes-painel-mascote a:hover {
+  background: var(--azul-marca);
+  border-color: var(--azul-marca);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.acoes-painel-mascote a:hover i {
+  color: #ffffff;
+}
+
 @keyframes flutuarBalaoMascote {
   0%,
   100% {
@@ -3392,46 +3531,64 @@ section {
 /* Notebook / telas médias */
 @media (max-width: 1199px) {
   .mascote-site {
-    width: clamp(110px, 13vw, 155px);
+    width: clamp(150px, 16vw, 195px);
     right: 18px;
     bottom: 24px;
   }
 
   .balao-mascote {
-    right: min(78%, 118px);
+    right: min(78%, 130px);
     min-width: 138px;
+  }
+
+  .painel-mascote {
+    right: calc(100% + 12px);
+    width: min(320px, calc(100vw - 32px));
   }
 }
 
 /* Tablet e celular grande */
 @media (max-width: 767px) {
   .mascote-site {
-    width: 112px;
+    width: 142px;
     right: 12px;
     bottom: 14px;
   }
 
   .balao-mascote {
-    right: 74px;
+    right: 98px;
     top: 8px;
-    min-width: 126px;
-    max-width: 142px;
+    min-width: 128px;
+    max-width: 150px;
     padding: 8px 10px;
     border-radius: 14px 14px 4px 14px;
+    font-size: 0.78rem;
   }
 
   .botao-fechar-mascote {
     top: -4px;
     right: -4px;
   }
+
+  .painel-mascote {
+    right: 0;
+    bottom: calc(100% + 12px);
+    width: min(330px, calc(100vw - 24px));
+    max-height: 62vh;
+    transform: translateY(12px) scale(0.96);
+  }
+
+  .mascote-site.painel-aberto .painel-mascote {
+    transform: translateY(0) scale(1);
+  }
 }
 
-/* Celular pequeno: deixa discreto para não cobrir conteúdo */
+/* Celular pequeno: mantém maior, mas sem balão para não cobrir conteúdo */
 @media (max-width: 480px) {
   .mascote-site {
-    width: 92px;
-    right: 10px;
-    bottom: 12px;
+    width: 124px;
+    right: 8px;
+    bottom: 10px;
   }
 
   .balao-mascote {
@@ -3439,11 +3596,28 @@ section {
   }
 
   .botao-fechar-mascote {
-    width: 27px;
-    height: 27px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .painel-mascote {
+    width: min(310px, calc(100vw - 18px));
+    right: 0;
+    bottom: calc(100% + 10px);
+    max-height: 62vh;
+    border-radius: 20px;
+  }
+
+  .corpo-painel-mascote {
+    padding: 14px;
+  }
+
+  .acoes-painel-mascote a {
+    min-height: 42px;
+    padding: 10px 12px;
+    font-size: 0.92rem;
   }
 }
-
 
 /* ================= BOTÃO REAPARECER MASCOTE ================= */
 
@@ -3452,15 +3626,15 @@ section {
   right: 0;
   bottom: clamp(18px, 3vh, 34px);
   z-index: 1199;
-  width: clamp(62px, 6.4vw, 88px);
-  height: clamp(116px, 10.5vw, 156px);
+  width: clamp(86px, 8vw, 118px);
+  height: clamp(156px, 13vw, 208px);
   border: none;
   background: transparent;
   padding: 0;
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
-  transform: translateX(65%) scale(0.96);
+  transform: translateX(66%) scale(0.96);
   transition:
     opacity 0.25s ease,
     visibility 0.25s ease,
@@ -3492,16 +3666,16 @@ section {
 
 @media (max-width: 767px) {
   .botao-reaparecer-mascote {
-    width: 58px;
-    height: 108px;
+    width: 78px;
+    height: 145px;
     bottom: 14px;
   }
 }
 
 @media (max-width: 480px) {
   .botao-reaparecer-mascote {
-    width: 50px;
-    height: 94px;
+    width: 68px;
+    height: 126px;
     bottom: 12px;
   }
 }

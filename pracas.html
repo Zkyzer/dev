@@ -220,8 +220,6 @@
       </div>
     </div>
   </section>
-
-
   <!-- ================= MASCOTE FLUTUANTE ================= -->
   <div class="mascote-site" id="mascoteSite" aria-label="Mascote da Transportadora Fabris">
     <button
@@ -235,15 +233,81 @@
     </button>
 
     <div class="balao-mascote">
-      Olá! Precisa de ajuda?
+      Clique em mim!
     </div>
 
-    <img
-      src="assets/img/mascote-assistente.png"
-      alt="Mascote da Transportadora Fabris"
-      class="imagem-mascote"
+    <button
+      class="botao-abrir-mascote"
+      id="botaoAbrirMascote"
+      type="button"
+      aria-label="Abrir opções do mascote"
+      aria-expanded="false"
+      aria-controls="painelMascote"
     >
+      <img
+        src="assets/img/mascote-assistente.png"
+        alt="Mascote da Transportadora Fabris"
+        class="imagem-mascote"
+      >
+    </button>
+
+    <div class="painel-mascote" id="painelMascote" aria-hidden="true">
+      <div class="cabecalho-painel-mascote">
+        <div>
+          <strong>Olá! Como posso ajudar?</strong>
+          <span>Atalhos rápidos</span>
+        </div>
+
+        <button
+          class="botao-fechar-painel-mascote"
+          id="botaoFecharPainelMascote"
+          type="button"
+          aria-label="Fechar opções do mascote"
+        >
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="corpo-painel-mascote">
+        <p>
+          Escolha uma opção para acessar mais rápido as informações da Transportadora Fabris.
+        </p>
+
+        <div class="acoes-painel-mascote">
+          <a href="https://api.whatsapp.com/send?phone=554937061400" target="_blank" rel="noopener">
+            <i class="bi bi-whatsapp"></i>
+            Falar no WhatsApp
+          </a>
+
+          <a href="servicos.html">
+            <i class="bi bi-grid"></i>
+            Ver serviços
+          </a>
+
+          <a href="unidades.html">
+            <i class="bi bi-geo-alt"></i>
+            Ver unidades
+          </a>
+
+          <a href="pracas.html">
+            <i class="bi bi-calendar-check"></i>
+            Regiões atendidas
+          </a>
+
+          <a href="rastreamento.html">
+            <i class="bi bi-truck"></i>
+            Rastreamento
+          </a>
+
+          <a href="index.html#fale-conosco">
+            <i class="bi bi-headset"></i>
+            Fale conosco
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
+
 
   <button
     class="botao-reaparecer-mascote"
