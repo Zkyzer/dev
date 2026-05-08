@@ -290,6 +290,7 @@ const dadosMapasEstados = [
         endereco: "BR 101, 412 - Bairro Centro - CEP 88130-050",
         telefone: "(48) 3083-7050",
         horario: "Atendimento conforme operação",
+        imagem: "assets/img/unidade-palhoca.jpeg",
         linkMapa: "https://www.google.com/maps/search/?api=1&query=Palho%C3%A7a+-+SC%2C+BR+101%2C+412+-+Bairro+Centro+-+CEP+88130-050",
         linkContato: "index.html#fale-conosco",
         rotuloImagem: "Foto da unidade em Palhoça"
@@ -956,14 +957,18 @@ function atualizarDetalhesUnidade(unidade, estado = null) {
   horarioUnidade.textContent = unidade.horario;
   linkMapaUnidade.href = unidade.linkMapa;
   linkContatoUnidade.href = unidade.linkContato;
-
   if (imagemUnidade) {
-    imagemUnidade.innerHTML = `
+    if (unidade.imagem) {
+      imagemUnidade.innerHTML = `<img src="${unidade.imagem}" alt="${unidade.rotuloImagem || unidade.nome}">`;
+    } else {
+      imagemUnidade.innerHTML = `
       <i class="bi bi-image"></i>
       <span>${unidade.rotuloImagem}</span>
     `;
+    }  
   }
 
+  
   document.querySelectorAll(".pin-mapa").forEach((pin) => {
     pin.classList.toggle("active", pin.dataset.unidade === unidade.id);
   });
@@ -1175,3 +1180,47 @@ if (botaoServicoAnterior && botaoServicoProximo && tituloServico) {
 
   renderizarSlideServico(indiceServicoAtual);
 }
+
+
+// ================= MASCOTE FLUTUANTE =================
+
+const mascoteSite = document.getElementById("mascoteSite");
+const botaoFecharMascote = document.getElementById("botaoFecharMascote");
+const botaoReaparecerMascote = document.getElementById("botaoReaparecerMascote");
+const chaveMascoteOculto = "transfabrisMascoteOculto";
+
+function ocultarMascote() {
+  if (!mascoteSite || !botaoReaparecerMascote) {
+    return;
+  }
+
+  mascoteSite.classList.add("mascote-oculto");
+  botaoReaparecerMascote.classList.add("esta-visivel");
+  localStorage.setItem(chaveMascoteOculto, "sim");
+}
+
+function mostrarMascote() {
+  if (!mascoteSite || !botaoReaparecerMascote) {
+    return;
+  }
+
+  mascoteSite.classList.remove("mascote-oculto");
+  botaoReaparecerMascote.classList.remove("esta-visivel");
+  localStorage.removeItem(chaveMascoteOculto);
+}
+
+if (mascoteSite && botaoReaparecerMascote) {
+  const mascoteFoiOcultado = localStorage.getItem(chaveMascoteOculto) === "sim";
+
+  if (mascoteFoiOcultado) {
+    mascoteSite.classList.add("mascote-oculto");
+    botaoReaparecerMascote.classList.add("esta-visivel");
+  }
+
+  if (botaoFecharMascote) {
+    botaoFecharMascote.addEventListener("click", ocultarMascote);
+  }
+
+  botaoReaparecerMascote.addEventListener("click", mostrarMascote);
+}
+
