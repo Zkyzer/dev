@@ -3740,3 +3740,100 @@ section {
     bottom: 10px !important;
   }
 }
+
+/* ================= CORREÇÃO COR DOS DIAS NO MOBILE ================= */
+
+.card-mobile-entrega .etiqueta-dia-entrega {
+  color: #ffffff !important;
+}
+
+.card-mobile-entrega .dia-entrega-inativo {
+  color: #9aa4b2 !important;
+}
+
+
+/* ================= AJUSTE SETAS SERVIÇOS MOBILE ================= */
+
+/*
+  Ajuste do slider da página Serviços:
+  - mantém as setas nas laterais no desktop;
+  - no tablet/celular, posiciona as setas nas laterais da imagem;
+  - evita que as setas fiquem abaixo do card ou sobre o texto.
+*/
+
+@media (max-width: 991px) {
+  .destaque-servico {
+    --altura-imagem-servico-mobile: clamp(360px, 62vw, 520px);
+  }
+
+  .area-imagem-destaque-servico {
+    height: var(--altura-imagem-servico-mobile);
+    min-height: var(--altura-imagem-servico-mobile);
+  }
+
+  .imagem-destaque-servico {
+    height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+
+  .seta-slider-servico {
+    top: calc(var(--altura-imagem-servico-mobile) / 2) !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.96);
+    z-index: 8;
+  }
+
+  .seta-slider-servico:hover {
+    transform: translateY(-50%) scale(1.04) !important;
+  }
+
+  .seta-slider-servico-esquerda {
+    left: 14px !important;
+  }
+
+  .seta-slider-servico-direita {
+    right: 14px !important;
+  }
+}
+
+@media (max-width: 575px) {
+  .destaque-servico {
+    --altura-imagem-servico-mobile: clamp(330px, 88vw, 430px);
+  }
+
+  .area-imagem-destaque-servico {
+    height: var(--altura-imagem-servico-mobile);
+    min-height: var(--altura-imagem-servico-mobile);
+  }
+
+  .imagem-destaque-servico {
+    height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+
+  .seta-slider-servico {
+    width: 48px;
+    height: 48px;
+    top: calc(var(--altura-imagem-servico-mobile) / 2) !important;
+    border-radius: 15px;
+  }
+
+  .seta-slider-servico-esquerda {
+    left: 10px !important;
+  }
+
+  .seta-slider-servico-direita {
+    right: 10px !important;
+  }
+
+  .sobreposicao-imagem-destaque-servico {
+    left: 18px;
+    bottom: 18px;
+  }
+}
