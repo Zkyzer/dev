@@ -793,7 +793,7 @@ section {
 
 .secao-mapa-unidades {
   padding: 90px 0 100px;
-  background: #ffffff;
+   background: #ffffff;
 }
 
 .cabecalho-mapa-unidades {
@@ -3203,5 +3203,53 @@ section {
   .acoes-hero-rastreamento .btn,
   .acoes-destaque-servico .btn {
     width: min(100%, 360px);
+  }
+}
+
+
+/* ================= AJUSTE CENTRALIZAÇÃO REGIÕES ATENDIDAS ================= */
+
+/*
+  Correção da aba Regiões Atendidas:
+  - centraliza o bloco de consulta;
+  - corrige o grid dos filtros, que estava com 4 colunas para apenas 3 itens;
+  - garante que a tabela ocupe toda a largura disponível do card;
+  - mantém o layout contido, sem esticar o site inteiro.
+*/
+
+.secao-agenda-entrega > .container {
+  max-width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grade-resumo-entrega,
+.card-consulta-entrega {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grade-filtros-entrega {
+  grid-template-columns: minmax(320px, 1.35fr) minmax(220px, 0.75fr) minmax(190px, 0.55fr);
+  width: 100%;
+}
+
+.botao-limpar-entrega {
+  width: 100%;
+}
+
+.area-tabela-entrega {
+  width: 100%;
+}
+
+.tabela-entrega {
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+  .grade-filtros-entrega {
+    grid-template-columns: 1fr;
   }
 }
