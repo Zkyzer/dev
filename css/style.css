@@ -3465,10 +3465,15 @@ section {
     opacity 0.25s ease,
     visibility 0.25s ease,
     transform 0.25s ease,
-    filter 0.25s ease;
+  filter 0.25s ease;
+}
+
+.botao-reaparecer-mascote:not(.esta-visivel) {
+  display: none;
 }
 
 .botao-reaparecer-mascote.esta-visivel {
+  display: block;
   opacity: 1;
   visibility: visible;
   transform: translateX(34%) scale(1);
@@ -3835,5 +3840,650 @@ section {
   .sobreposicao-imagem-destaque-servico {
     left: 18px;
     bottom: 18px;
+  }
+}
+
+
+/* ================= REFINO RESPONSIVO MOBILE ================= */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+body {
+  min-width: 320px;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  padding-left: clamp(16px, 4vw, 24px);
+  padding-right: clamp(16px, 4vw, 24px);
+}
+
+.botao-marca-primario,
+.botao-marca-contorno,
+.botao-contato-primario,
+.botao-contato-secundario,
+.botao-consultar-rastreamento,
+.botao-limpar-entrega {
+  min-height: 44px;
+}
+
+@media (max-width: 991.98px) {
+  :root {
+    --altura-navbar: 60px;
+  }
+
+  .navbar-oficial {
+    padding: 7px 0;
+  }
+
+  .navbar-oficial .navbar-collapse {
+    margin-top: 10px;
+    padding: 10px 0 4px;
+    border-top: 1px solid rgba(18, 59, 143, 0.08);
+  }
+
+  .navbar-oficial .navbar-nav {
+    align-items: stretch !important;
+    gap: 2px;
+  }
+
+  .navbar-oficial .nav-link {
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+
+  .navbar-oficial .nav-link:hover,
+  .navbar-oficial .nav-link.active {
+    background: rgba(18, 59, 143, 0.06);
+  }
+
+  .navbar .botao-marca-primario {
+    margin-top: 8px !important;
+  }
+
+  .section-light,
+  .services-section,
+  .contact-section,
+  .units-section,
+  .secao-suave,
+  .secao-sobre,
+  .units-hero-section,
+  .secao-destaque-servicos,
+  .secao-beneficios-servicos,
+  .secao-mapa-unidades,
+  .secao-agenda-entrega,
+  .secao-consulta-rastreamento,
+  .secao-apoio-unidades {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .hero-pagina-servicos,
+  .secao-hero-entrega,
+  .secao-hero-rastreamento {
+    padding-top: 74px;
+    padding-bottom: 66px;
+  }
+
+  .titulo-secao {
+    font-size: clamp(1.85rem, 6vw, 2.35rem);
+  }
+
+  .subtitulo-secao {
+    font-size: 1rem;
+  }
+
+  .caixa-sobre,
+  .caixa-beneficios-servicos,
+  .caixa-apoio-unidades,
+  .card-consulta-entrega,
+  .card-consulta-rastreamento,
+  .card-resumo-rastreamento,
+  .painel-resultado-rastreamento,
+  .painel-cidades-atendidas {
+    border-radius: 22px;
+    padding: 24px;
+  }
+
+  .grade-rodape-contato {
+    gap: 24px;
+  }
+
+  .secao-rodape-contato .container {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .chamada-rodape-contato,
+  .marca-rodape-contato,
+  .info-rodape-contato {
+    width: min(100%, 560px);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .secao-capa-inicial {
+    height: auto;
+    min-height: calc(100svh - var(--altura-navbar));
+    padding: 104px 0 98px;
+  }
+
+  .logo-capa-inicial {
+    width: min(430px, 88vw);
+    max-height: 30svh;
+  }
+
+  .subtitulo-capa-inicial {
+    max-width: 34rem;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    padding: 0 4px;
+  }
+
+  .faixa-principal-marca {
+    height: 34px;
+  }
+
+  .linhas-faixa-marca-topo .linha-azul,
+  .linhas-faixa-marca-rodape .linha-vermelha-fina {
+    height: 10px;
+  }
+
+  .linhas-faixa-marca-topo .linha-branca,
+  .linhas-faixa-marca-rodape .linha-branca {
+    height: 4px;
+  }
+
+  .hero-pagina-servicos h1,
+  .conteudo-hero-entrega h1,
+  .conteudo-hero-rastreamento h1 {
+    font-size: clamp(2rem, 9vw, 2.65rem);
+    line-height: 1.12;
+  }
+
+  .hero-pagina-servicos p,
+  .conteudo-hero-entrega p,
+  .conteudo-hero-rastreamento p {
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .acoes-capa-inicial,
+  .acoes-pagina-servicos,
+  .acoes-hero-entrega,
+  .acoes-hero-rastreamento,
+  .acoes-destaque-servico,
+  .acoes-detalhe-unidade,
+  .acoes-rodape-contato {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+    gap: 10px;
+  }
+
+  .acoes-capa-inicial .btn,
+  .acoes-pagina-servicos .btn,
+  .acoes-hero-entrega .btn,
+  .acoes-hero-rastreamento .btn,
+  .acoes-destaque-servico .btn,
+  .acoes-destaque-servico .link-destaque-servico,
+  .acoes-detalhe-unidade .btn,
+  .acoes-detalhe-unidade .link-unidade,
+  .acoes-rodape-contato a {
+    width: 100%;
+    max-width: none;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .caixa-sobre,
+  .caixa-beneficios-servicos,
+  .caixa-apoio-unidades {
+    padding: 22px 18px;
+  }
+
+  .destaques-sobre,
+  .lista-beneficios-servicos,
+  .grade-apoio-unidades,
+  .grade-resumo-entrega,
+  .grade-filtros-entrega,
+  .resumo-status-rastreamento,
+  .linha-tempo-rastreamento,
+  .grade-dados-rastreamento {
+    grid-template-columns: 1fr !important;
+  }
+
+  .card-resumo-entrega {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .card-resumo-entrega strong {
+    font-size: 1.75rem;
+  }
+
+  .barra-resultados-entrega,
+  .cabecalho-resultado-rastreamento,
+  .cabecalho-cidades-atendidas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .observacao-entrega,
+  .aviso-integracao-rastreamento {
+    border-radius: 14px;
+    font-size: 0.92rem;
+  }
+
+  .card-destaque-servico,
+  .card-mapa-unidades,
+  .card-detalhe-unidade {
+    border-radius: 22px;
+  }
+
+  .destaque-servico {
+    --altura-imagem-servico-mobile: clamp(220px, 62vw, 310px);
+  }
+
+  .area-imagem-destaque-servico,
+  .imagem-destaque-servico {
+    height: var(--altura-imagem-servico-mobile);
+    min-height: var(--altura-imagem-servico-mobile);
+  }
+
+  .conteudo-destaque-servico h3 {
+    font-size: clamp(1.85rem, 8vw, 2.45rem);
+  }
+
+  .conteudo-destaque-servico p {
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .seta-slider-servico {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    top: calc(var(--altura-imagem-servico-mobile) / 2) !important;
+  }
+
+  .abas-slider-servico,
+  .abas-estados,
+  .atalhos-dias-entrega {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+  }
+
+  .abas-slider-servico button,
+  .aba-estado,
+  .atalhos-dias-entrega button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .card-mapa-unidades {
+    padding: 18px 14px;
+  }
+
+  .barra-mapa-estados {
+    grid-template-columns: 40px minmax(0, 1fr) 40px;
+    gap: 8px;
+  }
+
+  .botao-navegacao-estado {
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+  }
+
+  .titulo-mapa-estados span,
+  .titulo-mapa-estados small {
+    font-size: 0.72rem;
+  }
+
+  .palco-mapa-estado {
+    min-height: 300px;
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .midia-mapa-estado {
+    width: min(100%, 460px);
+  }
+
+  .pin-mapa span {
+    width: 14px;
+    height: 14px;
+    border-width: 2px;
+  }
+
+  .pin-mapa strong {
+    display: none;
+  }
+
+  .rodape-mapa-estado {
+    gap: 10px;
+    font-size: 0.86rem;
+  }
+
+  .conteudo-detalhe-unidade {
+    padding: 22px 18px;
+  }
+
+  .imagem-detalhe-unidade,
+  .imagem-detalhe-unidade img {
+    min-height: 200px;
+  }
+
+  .grade-cidades-atendidas {
+    grid-template-columns: 1fr !important;
+  }
+
+  .item-cidade-atendida {
+    min-width: 0;
+  }
+
+  .secao-cta-entrega,
+  .secao-cta-rastreamento,
+  .secao-cta-servicos {
+    padding: 58px 0;
+  }
+
+  .secao-cta-entrega .botao-marca-contorno {
+    background: transparent !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.55) !important;
+  }
+
+  .secao-cta-entrega .botao-marca-contorno:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+  }
+
+  .mascote-site {
+    width: 112px !important;
+    right: 8px !important;
+    bottom: 8px !important;
+  }
+
+  .botao-fechar-mascote {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .painel-mascote {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 124px !important;
+    max-height: 62dvh !important;
+  }
+
+  .acoes-painel-mascote {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .botao-reaparecer-mascote {
+    width: 66px !important;
+    height: 122px !important;
+    bottom: 8px !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  :root {
+    --altura-navbar: 56px;
+  }
+
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .logo-navbar {
+    height: 32px;
+  }
+
+  .navbar-toggler {
+    padding: 5px 8px;
+  }
+
+  .secao-capa-inicial {
+    padding: 92px 0 84px;
+  }
+
+  .logo-capa-inicial {
+    width: min(360px, 90vw);
+    max-height: 27svh;
+  }
+
+  .titulo-secao {
+    font-size: clamp(1.65rem, 7.5vw, 2rem);
+  }
+
+  .etiqueta-secao,
+  .hero-tag {
+    padding: 7px 12px;
+    font-size: 0.82rem;
+  }
+
+  .section-light,
+  .services-section,
+  .contact-section,
+  .units-section,
+  .secao-suave,
+  .secao-sobre,
+  .units-hero-section,
+  .secao-destaque-servicos,
+  .secao-beneficios-servicos,
+  .secao-mapa-unidades,
+  .secao-agenda-entrega,
+  .secao-consulta-rastreamento,
+  .secao-apoio-unidades {
+    padding-top: 54px;
+    padding-bottom: 58px;
+  }
+
+  .hero-pagina-servicos,
+  .secao-hero-entrega,
+  .secao-hero-rastreamento {
+    padding-top: 62px;
+    padding-bottom: 56px;
+  }
+
+  .botao-marca-primario,
+  .botao-marca-contorno,
+  .btn-warning,
+  .btn-outline-light {
+    padding: 10px 14px;
+    border-radius: 9px;
+    font-size: 0.94rem;
+  }
+
+  .card-consulta-entrega,
+  .card-consulta-rastreamento,
+  .card-resumo-rastreamento,
+  .painel-resultado-rastreamento,
+  .painel-cidades-atendidas {
+    padding: 20px 16px;
+    border-radius: 20px;
+  }
+
+  .conteudo-destaque-servico {
+    padding: 24px 16px;
+  }
+
+  .destaque-servico {
+    --altura-imagem-servico-mobile: clamp(210px, 58vw, 270px);
+  }
+
+  .seta-slider-servico {
+    width: 40px;
+    height: 40px;
+  }
+
+  .seta-slider-servico-esquerda {
+    left: 8px !important;
+  }
+
+  .seta-slider-servico-direita {
+    right: 8px !important;
+  }
+
+  .sobreposicao-imagem-destaque-servico {
+    left: 12px;
+    bottom: 12px;
+  }
+
+  .palco-mapa-estado {
+    min-height: 260px;
+    padding: 10px;
+  }
+
+  .imagem-mapa-estado {
+    max-height: 260px;
+  }
+
+  .topo-detalhe-unidade h3 {
+    font-size: 1.45rem;
+  }
+
+  .cabecalho-consulta-entrega h2,
+  .cabecalho-consulta-rastreamento h2,
+  .cabecalho-resultado-rastreamento h2,
+  .caixa-beneficios-servicos h2,
+  .caixa-apoio-unidades h2 {
+    font-size: clamp(1.45rem, 7vw, 1.85rem);
+  }
+
+  .input-icone-entrega input,
+  .campo-entrega select,
+  .campo-rastreamento select,
+  .input-icone-rastreamento input,
+  .botao-consultar-rastreamento,
+  .botao-limpar-entrega {
+    height: 46px;
+  }
+
+  .card-mobile-entrega > div:first-child {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .linha-dias-entrega {
+    gap: 5px;
+  }
+
+  .etiqueta-dia-entrega {
+    min-width: 38px;
+    min-height: 26px;
+    font-size: 0.72rem;
+  }
+
+  .etapa-rastreamento {
+    padding: 16px 14px;
+    border-radius: 16px;
+  }
+
+  .grade-dados-rastreamento div,
+  .resumo-status-rastreamento div {
+    padding: 14px;
+  }
+
+  .secao-rodape-contato {
+    padding: 36px 0;
+  }
+
+  .secao-rodape-contato .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .lista-rodape-contato li {
+    justify-content: flex-start;
+  }
+
+  .social-rodape-contato {
+    justify-content: center;
+  }
+
+  .mascote-site {
+    width: 62px !important;
+    right: 5px !important;
+    bottom: 7px !important;
+  }
+
+  .botao-fechar-mascote {
+    width: 23px !important;
+    height: 23px !important;
+    font-size: 0.66rem !important;
+  }
+
+  .painel-mascote {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 74px !important;
+    max-height: 64dvh !important;
+    border-radius: 18px !important;
+  }
+
+  .acoes-painel-mascote {
+    grid-template-columns: 1fr !important;
+  }
+
+  .botao-reaparecer-mascote {
+    width: 44px !important;
+    height: 82px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .secao-capa-inicial {
+    padding-top: 84px;
+    padding-bottom: 78px;
+  }
+
+  .hero-pagina-servicos h1,
+  .conteudo-hero-entrega h1,
+  .conteudo-hero-rastreamento h1 {
+    font-size: 1.85rem;
+  }
+
+  .card-mapa-unidades {
+    padding: 14px 10px;
+  }
+
+  .barra-mapa-estados {
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+  }
+
+  .botao-navegacao-estado {
+    width: 36px;
+    height: 36px;
+  }
+
+  .titulo-mapa-estados strong {
+    font-size: 1.08rem;
+  }
+
+  .mascote-site {
+    width: 56px !important;
   }
 }
