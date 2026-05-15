@@ -965,13 +965,16 @@ section {
 
 .pin-mapa {
   position: absolute;
-  left: var(--x);
-  top: var(--y);
+  left: var(--pin-x, var(--x));
+  top: var(--pin-y, var(--y));
   z-index: 8;
   border: none;
   background: transparent;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
   gap: 7px;
   color: var(--azul-marca-escuro);
   font-size: 0.76rem;
@@ -984,21 +987,26 @@ section {
 }
 
 .pin-mapa span {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
   background: var(--azul-marca);
   border: 3px solid #ffffff;
   border-radius: 50% 50% 50% 0;
   display: block;
+  flex: 0 0 auto;
   transform: rotate(-45deg);
   box-shadow: 0 10px 22px rgba(18, 59, 143, 0.25);
   transition: 0.25s ease;
 }
 
 .pin-mapa strong {
+  position: absolute;
+  left: calc(100% + 6px);
+  top: 50%;
   opacity: 0;
   visibility: hidden;
-  transform: translateX(-4px);
+  transform: translate(-4px, -50%);
+  pointer-events: none;
   white-space: nowrap;
   background: #ffffff;
   border: 1px solid rgba(18, 59, 143, 0.12);
@@ -1008,9 +1016,16 @@ section {
   transition: 0.25s ease;
 }
 
+.pin-mapa[data-label-side="left"] strong {
+  left: auto;
+  right: calc(100% + 6px);
+  transform: translate(4px, -50%);
+}
+
 .pin-mapa:hover,
 .pin-mapa.active {
-  transform: translate(-50%, -56%);
+  z-index: 14;
+  transform: translate(-50%, -50%) scale(1.08);
 }
 
 .pin-mapa:hover span,
@@ -1020,10 +1035,15 @@ section {
 }
 
 .pin-mapa:hover strong,
-.pin-mapa.active strong {
+.pin-mapa:focus-visible strong {
   opacity: 1;
   visibility: visible;
-  transform: translateX(0);
+  transform: translate(0, -50%);
+}
+
+.pin-mapa[data-label-side="left"]:hover strong,
+.pin-mapa[data-label-side="left"]:focus-visible strong {
+  transform: translate(0, -50%);
 }
 
 .rodape-mapa-estado {
@@ -4485,5 +4505,60 @@ body {
 
   .mascote-site {
     width: 56px !important;
+  }
+}
+
+/* ================= UNIDADES - PINS MOBILE INDEPENDENTES ================= */
+
+@media (max-width: 767.98px) {
+  .pin-mapa {
+    left: var(--pin-mobile-x, var(--pin-x));
+    top: var(--pin-mobile-y, var(--pin-y));
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    gap: 0;
+    transform: translate(-50%, -50%);
+    touch-action: manipulation;
+  }
+
+  .pin-mapa:hover,
+  .pin-mapa.active {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+
+  .pin-mapa span {
+    flex: 0 0 auto;
+    width: 14px;
+    height: 14px;
+    border-width: 2px;
+  }
+
+  .pin-mapa strong {
+    display: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .pin-mapa {
+    width: 28px;
+    height: 28px;
+  }
+
+  .pin-mapa span {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .pin-mapa {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pin-mapa span {
+    width: 11px;
+    height: 11px;
   }
 }

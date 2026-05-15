@@ -427,6 +427,169 @@ const dadosMapasEstados = [
   }
 ];
 
+// Ajuste este bloco para reorganizar os pins sem alterar as coordenadas originais.
+// Desktop e mobile ficam separados para evitar colisao em cada tamanho de tela.
+const organizacaoPins = {
+  sc: {
+    "sao-miguel-do-oeste": {
+      desktop: { x: 5.0, y: 22.0 },
+      mobile: { x: 5.0, y: 22.0 },
+      label: "right"
+    },
+    "maravilha": {
+      desktop: { x: 13.0, y: 24.0 },
+      mobile: { x: 13.0, y: 24.0 },
+      label: "right"
+    },
+    "pinhalzinho": {
+      desktop: { x: 20.0, y: 26.0 },
+      mobile: { x: 20.0, y: 26.0 },
+      label: "right"
+    },
+    "chapeco": {
+      desktop: { x: 26.0, y: 35.0 },
+      mobile: { x: 26.0, y: 35.0 },
+      label: "right"
+    },
+    "concordia": {
+      desktop: { x: 35.7, y: 37.0 },
+      mobile: { x: 36.4, y: 39.2 },
+      label: "right"
+    },
+    "herval-do-oeste": {
+      desktop: { x: 43.6, y: 35.1 },
+      mobile: { x: 43.6, y: 35.4 },
+      label: "left"
+    },
+    "videira": {
+      desktop: { x: 45.0, y: 28.2 },
+      mobile: { x: 41.0, y: 27.2 },
+      label: "left"
+    },
+    "fraiburgo": {
+      desktop: { x: 52.0, y: 31.6 },
+      mobile: { x: 52.4, y: 30.8 },
+      label: "right"
+    },
+    "cacador": {
+      desktop: { x: 50.8, y: 23.8 },
+      mobile: { x: 51.2, y: 22.2 },
+      label: "right"
+    },
+    "porto-uniao": {
+      desktop: { x: 62.7, y: 7.8 },
+      mobile: { x: 62.9, y: 7.0 },
+      label: "right"
+    },
+    "campos-novos": {
+      desktop: { x: 49.0, y: 42.4 },
+      mobile: { x: 48.4, y: 43.0 },
+      label: "left"
+    },
+    "curitibanos": {
+      desktop: { x: 58.2, y: 40.0 },
+      mobile: { x: 58.8, y: 40.2 },
+      label: "right"
+    },
+    "anita-garibaldi": {
+      desktop: { x: 55.0, y: 60.0 },
+      mobile: { x: 55.0, y: 60.0 },
+      label: "left"
+    },
+    "lages": {
+      desktop: { x: 68.0, y: 56.0 },
+      mobile: { x: 68.0, y: 56.0 },
+      label: "left"
+    },
+    "rio-do-sul": {
+      desktop: { x: 80.0, y: 38.0 },
+      mobile: { x: 80.0, y: 38. },
+      label: "left"
+    },
+    "sao-bento-do-sul": {
+      desktop: { x: 81.0, y: 8.0 },
+      mobile: { x: 81.0, y: 8.0 },
+      label: "left"
+    },
+    "jaragua-do-sul": {
+      desktop: { x: 90.0, y: 13.0 },
+      mobile: { x: 90.0, y: 13.0 },
+      label: "left"
+    },
+    "joinville": {
+      desktop: { x: 95.0, y: 3.0 },
+      mobile: { x: 94.0, y: 8.8 },
+      label: "left"
+    },
+    "blumenau": {
+      desktop: { x: 92.0, y: 28.5 },
+      mobile: { x: 92.0, y: 28.5 },
+      label: "left"
+    },
+    "palhoca": {
+      desktop: { x: 94.0, y: 52.0 },
+      mobile: {  x: 94.0, y: 52.0 },
+      label: "left"
+    },
+    "tubarao": {
+      desktop: { x: 85.0, y: 74.0 },
+      mobile: { x: 85.0, y: 74.0 },
+      label: "left"
+    },
+    "criciuma": {
+      desktop: { x: 80.0, y: 79.0 },
+      mobile: { x: 80.0, y: 79.0 },
+      label: "left"
+    }
+  },
+  rs: {
+    "vacaria": {
+      desktop: { x: 72.6, y: 24.4 },
+      mobile: { x: 71.4, y: 23.8 },
+      label: "left"
+    },
+    "caxias-do-sul": {
+      desktop: { x: 74.6, y: 35.6 },
+      mobile: { x: 75.8, y: 36.4 },
+      label: "left"
+    }
+  },
+  sp: {
+    "sao-paulo": {
+      desktop: { x: 84.5, y: 65.4 },
+      mobile: { x: 84.5, y: 65.4 },
+      label: "left"
+    }
+  },
+  pr: {
+    "uniao-da-vitoria": {
+      desktop: { x: 53.0, y: 69.0 },
+      mobile: { x: 53.0, y: 69.0 },
+      label: "right"
+    }
+  }
+};
+
+function obterOrganizacaoPin(estadoId, unidade) {
+  const organizacao = organizacaoPins[estadoId]?.[unidade.id] || {};
+
+  return {
+    desktop: organizacao.desktop || { x: unidade.x, y: unidade.y },
+    mobile: organizacao.mobile || organizacao.desktop || { x: unidade.x, y: unidade.y },
+    label: organizacao.label || "right"
+  };
+}
+
+function montarEstiloPin(estadoId, unidade) {
+  const organizacao = obterOrganizacaoPin(estadoId, unidade);
+
+  return [
+    `--pin-x: ${organizacao.desktop.x}%`,
+    `--pin-y: ${organizacao.desktop.y}%`,
+    `--pin-mobile-x: ${organizacao.mobile.x}%`,
+    `--pin-mobile-y: ${organizacao.mobile.y}%`
+  ].join("; ");
+}
 
 const botaoEstadoAnterior = document.getElementById("estadoAnterior");
 const botaoEstadoProximo = document.getElementById("proximoEstado");
@@ -456,10 +619,13 @@ let indiceEstadoAtual = 0;
 
 
 const cidadesAtendidasPorUnidade = {
+  "anita-garibaldi": [
+    "Anita Garibaldi"
+  ],
   "blumenau": [
     "Ascurra",
-    "Balneário Camboriú",
-    "Balneário Piçarras",
+    "Balneario Camboriu",
+    "Balneario Picarras",
     "Barra Velha",
     "Benedito Novo",
     "Blumenau",
@@ -475,11 +641,11 @@ const cidadesAtendidasPorUnidade = {
     "Pomerode",
     "Rio dos Cedros",
     "Rodeio",
-    "São João do Itaperiu",
+    "Sao Joao do Itaperiu",
     "Timbo"
   ],
   "cacador": [
-    "Caçador",
+    "Cacador",
     "Calmon",
     "Lebon Regis",
     "Matos Costa"
@@ -490,7 +656,7 @@ const cidadesAtendidasPorUnidade = {
     "Celso Ramos"
   ],
   "caxias-do-sul": [
-    "Bento Gonçalves",
+    "Bento Goncalves",
     "Carlos Barbosa",
     "Caxias do Sul",
     "Farroupilha",
@@ -499,12 +665,12 @@ const cidadesAtendidasPorUnidade = {
   ],
   "chapeco": [
     "Abelardo Luz",
-    "Águas de Chapecó",
+    "Aguas de Chapeco",
     "Arvoredo",
     "Bom Jesus",
     "Catanduvas",
     "Caxambu do Sul",
-    "Chapecó",
+    "Chapeco",
     "Cordilheira Alta",
     "Coronel Freitas",
     "Coronel Martins",
@@ -529,9 +695,9 @@ const cidadesAtendidasPorUnidade = {
     "Ponte Serrada",
     "Quilombo",
     "Santiago do Sul",
-    "São Carlos",
-    "São Domingos",
-    "São Lourenço do Oeste",
+    "Sao Carlos",
+    "Sao Domingos",
+    "Sao Lourenco do Oeste",
     "Seara",
     "Uniao do Oeste",
     "Vargeao",
@@ -543,7 +709,7 @@ const cidadesAtendidasPorUnidade = {
   "concordia": [
     "Alto Bela Vista",
     "Arabuta",
-    "Concórdia",
+    "Concordia",
     "Ipira",
     "Ipumirim",
     "Jabora",
@@ -553,40 +719,40 @@ const cidadesAtendidasPorUnidade = {
     "Presidente Castello Branco"
   ],
   "criciuma": [
-    "( Boa Vista - Lombas - Sanga Funda)",
-    "( Laranjinha - São Marcos )",
-    "( Verdinho - São Roque - Sangão )",
     "Ararangua",
     "Ararangua (Morro dos Conventos)",
     "Balneario Arroio do Silva",
     "Balneario Gaivota",
     "Balneario Rincao",
+    "(Boa Vista - Lombas - Sanga Funda)",
     "Cocal do Sul",
-    "Criciúma",
+    "Criciuma",
     "Ermo",
     "Forquilhinha",
-    "Içara",
-    "Içara (Esplanada)",
+    "( Verdinho - São Roque - Sangão )",
+    "Icara (Esplanada)",
+    "Icara",
     "Jacinto Machado",
     "Lauro Muller",
     "Maracaja",
     "Meleiro",
     "Morro da Fumaca",
     "Morro Grande",
-    "Nova Veneza",
     "Nova Veneza (Caravagio)",
+    "Nova Veneza",
     "Orleans",
-    "Orleans ( Pindotiba)",
+    "Orleans (Pindotiba)",
     "Passo de Torres",
     "Praia Grande",
     "Santa Rosa do Sul",
-    "São João do Sul",
+    "Sao Joao do Sul",
     "Sideropolis",
+    "( Laranjinha - São Marcos )",
     "Sombrio",
     "Timbe do Sul",
     "Treviso",
+    "Turvo (Morro Chato)",
     "Turvo",
-    "Turvo (Morro Chato )",
     "Urussanga"
   ],
   "curitibanos": [
@@ -603,7 +769,7 @@ const cidadesAtendidasPorUnidade = {
     "Erval Velho",
     "Herval d'Oeste",
     "Ibicare",
-    "Joaçaba",
+    "Joacaba",
     "Lacerdopolis",
     "Luzerna",
     "Ouro",
@@ -613,7 +779,7 @@ const cidadesAtendidasPorUnidade = {
   "jaragua-do-sul": [
     "Corupa",
     "Guaramirim",
-    "Jaraguá do Sul",
+    "Jaragua do Sul",
     "Massaranduba",
     "Schroeder"
   ],
@@ -623,7 +789,7 @@ const cidadesAtendidasPorUnidade = {
     "Erval Velho",
     "Herval d'Oeste",
     "Ibicare",
-    "Joaçaba",
+    "Joacaba",
     "Lacerdopolis",
     "Luzerna",
     "Ouro",
@@ -636,7 +802,7 @@ const cidadesAtendidasPorUnidade = {
     "Garuva",
     "Itapoa",
     "Joinville",
-    "São Francisco do Sul"
+    "Sao Francisco do Sul"
   ],
   "lages": [
     "Alfredo Wagner",
@@ -673,12 +839,12 @@ const cidadesAtendidasPorUnidade = {
     "Rio Rufino",
     "Salete",
     "Santa Cecilia",
-    "São Cristóvão do Sul",
-    "São Joaquim",
-    "São José do Cerrito",
+    "Sao Cristovao do Sul",
+    "Sao Joaquim",
+    "Sao Jose do Cerrito",
     "Taio",
     "Timbo Grande",
-    "Três Barras",
+    "Tres Barras",
     "Urubici",
     "Urupema",
     "Vargem"
@@ -692,37 +858,37 @@ const cidadesAtendidasPorUnidade = {
     "Romelandia",
     "Saltinho",
     "Santa Terezinha do Progresso",
-    "São Miguel da Boa Vista",
+    "Sao Miguel da Boa Vista",
     "Tigrinhos"
   ],
   "palhoca": [
-    "Águas Mornas",
+    "Aguas Mornas",
     "Anitapolis",
     "Antonio Carlos",
-    "Biguaçu",
+    "Biguacu",
     "Bombinhas",
     "Botuvera",
     "Brusque",
     "Canelinha",
-    "Florianópolis",
+    "Florianopolis",
     "Governador Celso Ramos",
     "Guabiruba",
     "Itapema",
     "Major Gercino",
-    "Norte da Ilha (Florianópolis)",
+    "Norte da Ilha (Florianopolis)",
     "Nova Trento",
     "Palhoca",
     "Porto Belo",
     "Santo Amaro da Imperatriz",
-    "São Bonifácio",
-    "São João Batista",
-    "São José",
-    "São Pedro de Alcântara",
-    "Sul da Ilha (Florianópolis)",
+    "Sao Bonifacio",
+    "Sao Joao Batista",
+    "Sao Jose",
+    "Sao Pedro de Alcantara",
+    "Sul da Ilha (Florianopolis)",
     "Tijucas"
   ],
   "pinhalzinho": [
-    "Águas Frias",
+    "Aguas Frias",
     "Cunhatai",
     "Modelo",
     "Mondai",
@@ -740,8 +906,8 @@ const cidadesAtendidasPorUnidade = {
     "General Carneiro",
     "Paula Freitas",
     "Paulo Frontin",
-    "Porto Uniao",
     "Porto Vitoria",
+    "Porto Uniao",
     "Uniao da Vitoria"
   ],
   "rio-do-sul": [
@@ -774,7 +940,7 @@ const cidadesAtendidasPorUnidade = {
   "sao-bento-do-sul": [
     "Campo Alegre",
     "Rio Negrinho",
-    "São Bento do Sul"
+    "Sao Bento do Sul"
   ],
   "sao-miguel-do-oeste": [
     "Anchieta",
@@ -785,7 +951,7 @@ const cidadesAtendidasPorUnidade = {
     "Caibi",
     "Campo Ere",
     "Descanso",
-    "Dionísio Cerqueira",
+    "Dionisio Cerqueira",
     "Guaraciaba",
     "Guaruja do Sul",
     "Ipora do Oeste",
@@ -795,18 +961,21 @@ const cidadesAtendidasPorUnidade = {
     "Paraiso",
     "Princesa",
     "Santa Helena",
-    "São Bernardino",
-    "São João do Oeste",
-    "São José do Cedro",
-    "São Miguel do Oeste",
+    "Sao Bernardino",
+    "Sao Joao do Oeste",
+    "Sao Jose do Cedro",
+    "Sao Miguel do Oeste",
     "Tunapolis"
+  ],
+  "sao-paulo": [
+    "Sao Paulo"
   ],
   "tubarao": [
     "Armazem",
     "Braco do Norte",
     "Capivari de Baixo",
     "Garopaba",
-    "Grão-Pará",
+    "Grao Para",
     "Gravatal",
     "Imarui",
     "Imbituba",
@@ -818,10 +987,10 @@ const cidadesAtendidasPorUnidade = {
     "Rio Fortuna",
     "Sangao",
     "Santa Rosa de Lima",
-    "São Ludgero",
-    "São Martinho",
+    "Sao Ludgero",
+    "Sao Martinho",
     "Treze de Maio",
-    "Tubarão"
+    "Tubarao"
   ],
   "uniao-da-vitoria": [
     "Bituruna",
@@ -829,8 +998,8 @@ const cidadesAtendidasPorUnidade = {
     "General Carneiro",
     "Paula Freitas",
     "Paulo Frontin",
-    "Porto Uniao",
     "Porto Vitoria",
+    "Porto Uniao",
     "Uniao da Vitoria"
   ],
   "vacaria": [
@@ -987,8 +1156,9 @@ function renderizarPins(estado) {
         class="pin-mapa ${indice === 0 ? "active" : ""}"
         type="button"
         data-unidade="${unidade.id}"
+        data-label-side="${obterOrganizacaoPin(estado.id, unidade).label}"
         aria-label="Selecionar unidade ${unidade.nome}"
-        style="--x: ${unidade.x}%; --y: ${unidade.y}%;"
+        style="${montarEstiloPin(estado.id, unidade)}"
       >
         <span></span>
         <strong>${unidade.nome.replace(" - ", " ")}</strong>
@@ -1288,4 +1458,3 @@ if (mascoteSite && botaoReaparecerMascote) {
     }
   });
 }
-
