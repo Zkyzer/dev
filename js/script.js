@@ -453,72 +453,72 @@ const organizacaoPins = {
     },
     "concordia": {
       desktop: { x: 35.7, y: 37.0 },
-      mobile: { x: 36.4, y: 39.2 },
+      mobile: { x: 35.7, y: 37.0 },
       label: "right"
     },
     "herval-do-oeste": {
       desktop: { x: 43.6, y: 35.1 },
-      mobile: { x: 43.6, y: 35.4 },
+      mobile: { x: 43.6, y: 35.1 },
       label: "left"
     },
     "videira": {
-      desktop: { x: 45.0, y: 28.2 },
-      mobile: { x: 41.0, y: 27.2 },
+      desktop: { x: 47.0, y: 31.0 },
+      mobile: { x: 47.0, y: 31.0 },
       label: "left"
     },
     "fraiburgo": {
       desktop: { x: 52.0, y: 31.6 },
-      mobile: { x: 52.4, y: 30.8 },
+      mobile: { x: 52.0, y: 31.6 },
       label: "right"
     },
     "cacador": {
       desktop: { x: 50.8, y: 23.8 },
-      mobile: { x: 51.2, y: 22.2 },
+      mobile: { x: 50.8, y: 23.8 },
       label: "right"
     },
     "porto-uniao": {
-      desktop: { x: 62.7, y: 7.8 },
-      mobile: { x: 62.9, y: 7.0 },
+      desktop: { x: 48.0, y: 12.0 },
+      mobile: { x: 48.0, y: 12.0 },
       label: "right"
     },
     "campos-novos": {
       desktop: { x: 49.0, y: 42.4 },
-      mobile: { x: 48.4, y: 43.0 },
+      mobile: { x: 49.0, y: 42.4 },
       label: "left"
     },
     "curitibanos": {
       desktop: { x: 58.2, y: 40.0 },
-      mobile: { x: 58.8, y: 40.2 },
+      mobile: { x: 58.2, y: 40.0 },
       label: "right"
     },
     "anita-garibaldi": {
-      desktop: { x: 55.0, y: 60.0 },
-      mobile: { x: 55.0, y: 60.0 },
+      desktop: { x: 51.0, y: 52.0 },
+      mobile: { x: 51.0, y: 52.0 },
       label: "left"
     },
     "lages": {
-      desktop: { x: 68.0, y: 56.0 },
-      mobile: { x: 68.0, y: 56.0 },
+      desktop: { x: 62.0, y: 56.0 },
+      mobile: { x: 62.0, y: 56.0 },
       label: "left"
     },
     "rio-do-sul": {
-      desktop: { x: 80.0, y: 38.0 },
-      mobile: { x: 80.0, y: 38. },
+      desktop: { x: 77.0, y: 38.0 },
+      mobile: { x: 77.0, y: 38.0 },
       label: "left"
     },
     "sao-bento-do-sul": {
-      desktop: { x: 81.0, y: 8.0 },
-      mobile: { x: 81.0, y: 8.0 },
+      desktop: { x: 84.0, y: 7.0 },
+      mobile: { x: 84.0, y: 7.0 },
       label: "left"
     },
     "jaragua-do-sul": {
-      desktop: { x: 90.0, y: 13.0 },
-      mobile: { x: 90.0, y: 13.0 },
+      desktop: { x: 92.0, y: 17.0 },
+      mobile: { x: 92.0, y: 17.0 },
       label: "left"
     },
     "joinville": {
-      desktop: { x: 95.0, y: 3.0 },
-      mobile: { x: 94.0, y: 8.8 },
+      desktop: { x: 95.0, y:10.0 },
+      mobile: { x: 95.0, y:10.0 },
       label: "left"
     },
     "blumenau": {
@@ -527,8 +527,8 @@ const organizacaoPins = {
       label: "left"
     },
     "palhoca": {
-      desktop: { x: 94.0, y: 52.0 },
-      mobile: {  x: 94.0, y: 52.0 },
+      desktop: { x: 94.0, y: 49.0 },
+      mobile: {  x: 94.0, y: 49.0 },
       label: "left"
     },
     "tubarao": {
